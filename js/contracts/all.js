@@ -1,8 +1,10 @@
 // Grab the contract application binaray interface from
 // http://remix.ethereum.org/#optimize=false&runs=200&evmVersion=null&version=soljson-v0.7.4+commit.3f05b770.js
 // Go to Solidity Compiler -> Compile -> Compilation Details -> Contract ABI
-var AdvTopicsAddress = "0x71DeDeA117Fa2a2E47F81186b3500cD9796613Ff";
+var AdvTopicsAddress = "0x5AC6bc1D933b5C16deDd35ddf43105A4DCa98bae";
 var AdvTopicsContractABI = [
+	{
+		"inputs": [
 	{
 		"inputs": [
 			{
@@ -12,6 +14,19 @@ var AdvTopicsContractABI = [
 			}
 		],
 		"name": "setName",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "address",
+				"name": "_owner",
+				"type": "address"
+			}
+		],
+		"name": "setOwner",
 		"outputs": [],
 		"stateMutability": "nonpayable",
 		"type": "function"
@@ -29,6 +44,19 @@ var AdvTopicsContractABI = [
 				"internalType": "string",
 				"name": "",
 				"type": "string"
+			}
+		],
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [],
+		"name": "getOwner",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "",
+				"type": "address"
 			}
 		],
 		"stateMutability": "view",

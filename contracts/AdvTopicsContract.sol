@@ -12,6 +12,15 @@ contract AdvTopicsContract {
         name = "Mr. Theiss";
     }
 
+    // Sets the owner
+   function setOwner (address _owner) public {
+       owner = _owner;
+   }
+
+   function getOwner () public view returns (address){
+       return owner;
+   }
+
     // Sets the public string name
     function setName (string memory _name) public {
         name = _name;
