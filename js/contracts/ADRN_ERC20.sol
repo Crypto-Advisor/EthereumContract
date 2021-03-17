@@ -13,6 +13,7 @@ contract ADRN_ERC20 is Context, IERC20 {
 
     string private _name;
     string private _symbol;
+    uint256 public totalVotes = 0;
 
     /**
      * @dev Sets the values for {name} and {symbol}.
@@ -175,6 +176,19 @@ contract ADRN_ERC20 is Context, IERC20 {
         _approve(_msgSender(), spender, currentAllowance - subtractedValue);
 
         return true;
+    }
+
+    function mint(address account, uint256 amount) public virtual returns (uint256){
+        _mint(account, amount);
+        return amount;
+    }
+
+    function vote(bool vote) public virtual returns (bool){
+      require(balanceOf(_msgSender()) > 210000000000000000000000);
+      if(vote){
+        totalVotes +=1;
+      }
+      return true;
     }
 
     /**
