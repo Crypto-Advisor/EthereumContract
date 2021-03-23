@@ -67,7 +67,13 @@
   </div>
   <div class="row">
     <div class="col-lg-12 text-center">
-      <button id="ownerTest" class="btn btn-primary btn-lg">Set Owner</button>
+      <form role="form">
+        <input id="mintTokensAmount" placeholder="Amount">
+        </input>
+        <span class="input-group-btn">
+          <button id="mintTokensButton" class="btn btn-primary btn-lg">Mint Tokens</button>
+        </span>
+      </form>
     </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -202,19 +208,19 @@
         console.log(settingName, name);
       }
 
+    document.getElementById('mintTokensButton').onclick = mintTokens;
 
-    document.getElementById('ownerTest').onclick = setOwner;
-
-    async function setOwner() {
+    async function mintTokens() {
+      var amount = document.getElementById("mintTokensAmount").value;
       // Eth Contract takes the ABI
       ACTIVE_CONTRACT = new web3.eth.Contract(AdvTopicsContractABI, AdvTopicsAddress);
-      var settingOwner = await ACTIVE_CONTRACT.methods.setOwner(0x8F7f617051C2BA69a26e29eE727399Fc16EF9EEC).send({
+      var minting = await ACTIVE_CONTRACT.methods.mint(ACTIVE_WALLET,amount).send({
         from: ACTIVE_WALLET
       });
-      var owner = await ACTIVE_CONTRACT.methods.getOwner().call();
+      //var owner = await ACTIVE_CONTRACT.methods.getOwner().call();
 
       // Validate the name is changing
-      console.log(settingOwner, owner);
+      console.log("true");
     }
   }
 
